@@ -1,18 +1,18 @@
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.InOrder;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintStream;
 
-import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.*;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.InOrder;
+import org.mockito.runners.MockitoJUnitRunner;
 
 /**
  * Created by yushi on 8/27/14.
