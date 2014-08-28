@@ -5,7 +5,7 @@ import org.junit.Test;
 public class CompareNumberTest {
 
     @Test
-    public void shouldReturn4A0BWhenGivenSameNumberAndPosition() throws Exception {
+    public void shouldReturn4A0BWhenGivenSameNumberAndPosition() {
         //given
         String answer = "1234";
         String input = "1234";
@@ -18,7 +18,7 @@ public class CompareNumberTest {
     }
 
     @Test
-    public void shouldReturn0A4BWhenGivenSameNumberDifferentPoisition() throws Exception {
+    public void shouldReturn0A4BWhenGivenSameNumberDifferentPoisition(){
         //given
         String answer = "1234";
         String input = "4321";
@@ -31,7 +31,7 @@ public class CompareNumberTest {
     }
 
     @Test
-    public void shouldReturn0A0BWhenGivenNotSameNumber() throws Exception {
+    public void shouldReturn0A0BWhenGivenNotSameNumber() {
         //given
         String answer = "1234";
         String input = "5678";
@@ -44,7 +44,7 @@ public class CompareNumberTest {
     }
 
     @Test
-    public void shouldReturnXAYBWhenGivenSamePartialNumber() throws Exception {
+    public void shouldReturnXAYBWhenGivenSamePartialNumber() {
         //given
         String answer = "1234";
         String input = "8235";

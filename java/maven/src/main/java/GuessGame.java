@@ -12,6 +12,7 @@ public class GuessGame {
     public static final String WELCOME = "Welcome!";
     public static final String START_INFO = "Please input your number(%d)";
     public static final String MATCH = "4A0B";
+    public static final String REGEX = "^\\d{4}$";
     public static final int MAX_COUNT = 6;
 
     private int curCount = 0;
@@ -27,16 +28,10 @@ public class GuessGame {
         this.printStream = printStream;
     }
 
-    public void setAnswerGenerator(AnswerGenerator answerGenerator) {
-        this.answerGenerator = answerGenerator;
-    }
-
-    public void setBufferedReader(BufferedReader bufferedReader) {
-        this.bufferedReader = bufferedReader;
-    }
-
-    public void setPrintStream(PrintStream printStream) {
-        this.printStream = printStream;
+    private void checkInputValid(String input, String answer) throws Exception {
+        if (!input.matches(REGEX) || !answer.matches(REGEX)) {
+            throw new Exception("Input must be four numbers ");
+        }
     }
 
     public void playGame() {
@@ -72,6 +67,7 @@ public class GuessGame {
     }
 
     private String getCompareResult(String input) throws Exception {
+        checkInputValid(input, answer);
         String compare = CompareNumber.compare(input, answer);
 
         if (compare.equals(MATCH)) {

@@ -4,13 +4,7 @@ import java.util.Arrays;
  * Created by yushi on 8/25/14.
  */
 public class CompareNumber {
-    public static final String REGEX = "^\\d{4}$";
-
-    public static String compare(String input, String answer) throws Exception {
-        if (!input.matches(REGEX) || !answer.matches(REGEX)) {
-            throw new Exception("Input and answer value must be four number");
-        }
-
+    public static String compare(String input, String answer) {
         int sameNumberPositionCount = 0;
         int sameNumberDifferentPositionCount = 0;
         char[] inputCharArray = input.toCharArray();
@@ -25,4 +19,5 @@ public class CompareNumber {
         }
         return String.format("%dA%dB", sameNumberPositionCount, sameNumberDifferentPositionCount);
     }
+
 }
