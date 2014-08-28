@@ -6,32 +6,21 @@ import java.io.PrintStream;
 /**
  * Created by yushi on 8/27/14.
  */
-public class GuessGame {
+public class GuessGame extends BaseGame {
     public static final String CONGRATULATIONS = "Congratulations";
     public static final String GAME_OVER = "Game Over";
     public static final String WELCOME = "Welcome!";
     public static final String START_INFO = "Please input your number(%d)";
-    public static final String MATCH = "4A0B";
-    public static final String REGEX = "^\\d{4}$";
-    public static final int MAX_COUNT = 6;
 
     private int curCount = 0;
-    private String answer;
 
-    private AnswerGenerator answerGenerator;
     private BufferedReader bufferedReader;
     private PrintStream printStream;
 
     public GuessGame(AnswerGenerator answerGenerator, BufferedReader bufferedReader, PrintStream printStream) {
-        this.answerGenerator = answerGenerator;
+        super(answerGenerator);
         this.bufferedReader = bufferedReader;
         this.printStream = printStream;
-    }
-
-    private void checkInputValid(String input, String answer) throws Exception {
-        if (!input.matches(REGEX) || !answer.matches(REGEX)) {
-            throw new Exception("Input must be four numbers ");
-        }
     }
 
     public void playGame() {
@@ -67,7 +56,7 @@ public class GuessGame {
     }
 
     private String getCompareResult(String input) throws Exception {
-        checkInputValid(input, answer);
+        checkInputValid(input);
         String compare = CompareNumber.compare(input, answer);
 
         if (compare.equals(MATCH)) {

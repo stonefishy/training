@@ -55,7 +55,7 @@ public class GuessGameTest {
         //then
         inOrder.verify(printStream).println(GuessGame.WELCOME);
         inOrder.verify(printStream).println();
-        inOrder.verify(printStream).println(String.format(GuessGame.START_INFO, GuessGame.MAX_COUNT));
+        inOrder.verify(printStream).println(String.format(GuessGame.START_INFO, BaseGame.MAX_COUNT));
     }
 
     @Test
@@ -111,7 +111,7 @@ public class GuessGameTest {
         guessGame.playGame();
 
         //then
-        verify(printStream, never()).println(GuessGame.MATCH);
+        verify(printStream, never()).println(BaseGame.MATCH);
     }
 
     @Test
