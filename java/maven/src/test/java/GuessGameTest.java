@@ -88,6 +88,25 @@ public class GuessGameTest {
     }
 
     @Test
+    public void shouldPrint6TimesSequenceMessageWhenNotMatch() throws IOException {
+        //given
+        given(answerGenerator.getRandomNumber()).willReturn(1234);
+        given(bufferedReader.readLine()).willReturn("5678");
+
+        //when
+        guessGame.playGame();
+
+        //then
+        inOrder.verify(printStream).println(String.format(GuessGame.START_INFO,6));
+        inOrder.verify(printStream).println(String.format(GuessGame.START_INFO,5));
+        inOrder.verify(printStream).println(String.format(GuessGame.START_INFO,4));
+        inOrder.verify(printStream).println(String.format(GuessGame.START_INFO,3));
+        inOrder.verify(printStream).println(String.format(GuessGame.START_INFO,2));
+        inOrder.verify(printStream).println(String.format(GuessGame.START_INFO,1));
+
+    }
+
+    @Test
     public void shouldPrintCongratulationsWhenOneMatch() throws Exception {
         //given
         given(answerGenerator.getRandomNumber()).willReturn(1234);
@@ -111,7 +130,7 @@ public class GuessGameTest {
         guessGame.playGame();
 
         //then
-        verify(printStream, never()).println("4A0B");
+        verify(printStream, never()).println(GuessGame.MATCH);
     }
 
     @Test
