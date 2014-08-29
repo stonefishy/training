@@ -55,7 +55,7 @@ public class GuessGameTest {
         //then
         inOrder.verify(printStream).println(GuessGame.WELCOME);
         inOrder.verify(printStream).println();
-        inOrder.verify(printStream).println(String.format(GuessGame.START_INFO, BaseGame.MAX_COUNT));
+        inOrder.verify(printStream).println(String.format(GuessGame.PROMPT_MSG, GuessGame.MAX_COUNT));
     }
 
     @Test
@@ -84,7 +84,7 @@ public class GuessGameTest {
         //then
         inOrder.verify(printStream).println("0A3B");
         inOrder.verify(printStream).println();
-        inOrder.verify(printStream).println(String.format(GuessGame.START_INFO, 5));
+        inOrder.verify(printStream).println(String.format(GuessGame.PROMPT_MSG, 5));
     }
 
     @Test
@@ -97,7 +97,7 @@ public class GuessGameTest {
         guessGame.playGame();
 
         //then
-        inOrder.verify(printStream).println("Congratulations");
+        inOrder.verify(printStream).println(GuessGame.CONGRATULATIONS);
         inOrder.verifyNoMoreInteractions();
     }
 
@@ -111,7 +111,7 @@ public class GuessGameTest {
         guessGame.playGame();
 
         //then
-        verify(printStream, never()).println(BaseGame.MATCH);
+        verify(printStream, never()).println(GuessGame.MATCH);
     }
 
     @Test
@@ -124,12 +124,12 @@ public class GuessGameTest {
         guessGame.playGame();
 
         //then
-        inOrder.verify(printStream).println(String.format(GuessGame.START_INFO,6));
-        inOrder.verify(printStream).println(String.format(GuessGame.START_INFO,5));
-        inOrder.verify(printStream).println(String.format(GuessGame.START_INFO,4));
-        inOrder.verify(printStream).println(String.format(GuessGame.START_INFO,3));
-        inOrder.verify(printStream).println(String.format(GuessGame.START_INFO,2));
-        inOrder.verify(printStream).println(String.format(GuessGame.START_INFO,1));
+        inOrder.verify(printStream).println(String.format(GuessGame.PROMPT_MSG,6));
+        inOrder.verify(printStream).println(String.format(GuessGame.PROMPT_MSG,5));
+        inOrder.verify(printStream).println(String.format(GuessGame.PROMPT_MSG,4));
+        inOrder.verify(printStream).println(String.format(GuessGame.PROMPT_MSG,3));
+        inOrder.verify(printStream).println(String.format(GuessGame.PROMPT_MSG,2));
+        inOrder.verify(printStream).println(String.format(GuessGame.PROMPT_MSG,1));
         inOrder.verify(printStream).println(GuessGame.GAME_OVER);
         inOrder.verifyNoMoreInteractions();
     }

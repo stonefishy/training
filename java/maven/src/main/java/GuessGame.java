@@ -1,5 +1,4 @@
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 
@@ -7,10 +6,8 @@ import java.io.PrintStream;
  * Created by yushi on 8/27/14.
  */
 public class GuessGame extends BaseGame {
-    public static final String CONGRATULATIONS = "Congratulations";
     public static final String GAME_OVER = "Game Over";
     public static final String WELCOME = "Welcome!";
-    public static final String START_INFO = "Please input your number(%d)";
 
     private int curCount = 0;
 
@@ -33,7 +30,7 @@ public class GuessGame extends BaseGame {
         answer = String.valueOf(answerGenerator.getRandomNumber());
         printStream.println(WELCOME);
         printStream.println();
-        printStream.println(String.format(START_INFO, MAX_COUNT));
+        printStream.println(String.format(PROMPT_MSG, MAX_COUNT));
     }
 
     private void gameCore() {
@@ -47,7 +44,7 @@ public class GuessGame extends BaseGame {
                     break;
                 } else {
                     printStream.println();
-                    printStream.println(String.format(START_INFO, MAX_COUNT - curCount));
+                    printStream.println(String.format(PROMPT_MSG, MAX_COUNT - curCount));
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -56,8 +53,7 @@ public class GuessGame extends BaseGame {
     }
 
     private String getCompareResult(String input) throws Exception {
-        checkInputValid(input);
-        String compare = CompareNumber.compare(input, answer);
+        String compare = compareAnswer(input);
 
         if (compare.equals(MATCH)) {
             return CONGRATULATIONS;
@@ -69,13 +65,14 @@ public class GuessGame extends BaseGame {
     }
 
     private String readInputFromConsole() {
-        String str = null;
+        String input = null;
         try {
-            str = bufferedReader.readLine();
-        } catch (IOException e) {
+            input = bufferedReader.readLine();
+            checkInputValid(input);
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        return str;
+        return input;
     }
 
     public static void main(String[] args) {

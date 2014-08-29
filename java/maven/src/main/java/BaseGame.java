@@ -5,6 +5,9 @@ public class BaseGame {
     public static final String MATCH = "4A0B";
     public static final String REGEX = "^\\d{4}$";
     public static final int MAX_COUNT = 6;
+    public static final String PROMPT_MSG = "Please input your number(%d)";
+    public static final String CONGRATULATIONS = "Congratulation";
+
     protected String answer;
     protected AnswerGenerator answerGenerator;
 
@@ -19,8 +22,7 @@ public class BaseGame {
         }
     }
 
-    protected boolean compareAnswer(String input) {
-        String result = CompareNumber.compare(input, answer);
-        return result.equals(MATCH);
+    protected String compareAnswer(String input) {
+        return CompareNumber.compare(input, answer);
     }
 }

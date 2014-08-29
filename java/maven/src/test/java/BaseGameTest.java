@@ -4,6 +4,7 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.BDDMockito.given;
 
@@ -39,14 +40,14 @@ public class BaseGameTest {
     }
 
     @Test
-    public void shoulReturnTrueWhenInputMatchAnswer() {
+    public void shoulReturnMatchWhenInputMatchAnswer() {
         //given
         String input = "1234";
 
         //when
-        boolean result = baseGame.compareAnswer(input);
+        String result = baseGame.compareAnswer(input);
 
         //then
-        assertTrue(result);
+        assertEquals(result, BaseGame.MATCH);
     }
 }
