@@ -5,7 +5,7 @@ import java.io.PrintStream;
 /**
  * Created by yushi on 8/27/14.
  */
-public class GuessGame extends BaseGame {
+public class StoryGuessGame extends BaseGame {
     public static final String GAME_OVER = "Game Over";
     public static final String WELCOME = "Welcome!";
 
@@ -14,7 +14,7 @@ public class GuessGame extends BaseGame {
     private BufferedReader bufferedReader;
     private PrintStream printStream;
 
-    public GuessGame(AnswerGenerator answerGenerator, BufferedReader bufferedReader, PrintStream printStream) {
+    public StoryGuessGame(AnswerGenerator answerGenerator, BufferedReader bufferedReader, PrintStream printStream) {
         super(answerGenerator);
         this.bufferedReader = bufferedReader;
         this.printStream = printStream;
@@ -76,7 +76,7 @@ public class GuessGame extends BaseGame {
     }
 
     public static void main(String[] args) {
-        GuessGame guessGame = new GuessGame(new AnswerGenerator(), new BufferedReader(new InputStreamReader(System.in)), System.out);
-        guessGame.playGame();
+        StoryGuessGame storyGuessGame = new StoryGuessGame(new AnswerGenerator(), new BufferedReader(new InputStreamReader(System.in)), System.out);
+        storyGuessGame.playGame();
     }
 }

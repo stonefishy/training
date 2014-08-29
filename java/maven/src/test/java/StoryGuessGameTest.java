@@ -17,12 +17,12 @@ import org.mockito.runners.MockitoJUnitRunner;
  * Created by yushi on 8/27/14.
  */
 @RunWith(MockitoJUnitRunner.class)
-public class GuessGameTest {
+public class StoryGuessGameTest {
     @Mock
     private AnswerGenerator answerGenerator;
 
     @Mock
-    private GuessGame guessGame;
+    private StoryGuessGame storyGuessGame;
 
     @Mock
     private PrintStream printStream;
@@ -34,7 +34,7 @@ public class GuessGameTest {
 
     @Before
     public void setUp() {
-        guessGame = new GuessGame(answerGenerator,bufferedReader,printStream);
+        storyGuessGame = new StoryGuessGame(answerGenerator,bufferedReader,printStream);
         inOrder = inOrder(printStream);
     }
 
@@ -50,12 +50,12 @@ public class GuessGameTest {
         given(bufferedReader.readLine()).willReturn("1234");
 
         //when
-        guessGame.playGame();
+        storyGuessGame.playGame();
 
         //then
-        inOrder.verify(printStream).println(GuessGame.WELCOME);
+        inOrder.verify(printStream).println(StoryGuessGame.WELCOME);
         inOrder.verify(printStream).println();
-        inOrder.verify(printStream).println(String.format(GuessGame.PROMPT_MSG, GuessGame.MAX_COUNT));
+        inOrder.verify(printStream).println(String.format(StoryGuessGame.PROMPT_MSG, StoryGuessGame.MAX_COUNT));
     }
 
     @Test
@@ -65,10 +65,10 @@ public class GuessGameTest {
         given(bufferedReader.readLine()).willReturn("5678");
 
         //when
-        guessGame.playGame();
+        storyGuessGame.playGame();
 
         //then
-        inOrder.verify(printStream).println(GuessGame.GAME_OVER);
+        inOrder.verify(printStream).println(StoryGuessGame.GAME_OVER);
         inOrder.verifyNoMoreInteractions();
     }
 
@@ -79,12 +79,12 @@ public class GuessGameTest {
         given(bufferedReader.readLine()).willReturn("2345");
 
         //when
-        guessGame.playGame();
+        storyGuessGame.playGame();
 
         //then
         inOrder.verify(printStream).println("0A3B");
         inOrder.verify(printStream).println();
-        inOrder.verify(printStream).println(String.format(GuessGame.PROMPT_MSG, 5));
+        inOrder.verify(printStream).println(String.format(StoryGuessGame.PROMPT_MSG, 5));
     }
 
     @Test
@@ -94,10 +94,10 @@ public class GuessGameTest {
         given(bufferedReader.readLine()).willReturn("1234");
 
         //when
-        guessGame.playGame();
+        storyGuessGame.playGame();
 
         //then
-        inOrder.verify(printStream).println(GuessGame.CONGRATULATIONS);
+        inOrder.verify(printStream).println(StoryGuessGame.CONGRATULATIONS);
         inOrder.verifyNoMoreInteractions();
     }
 
@@ -108,10 +108,10 @@ public class GuessGameTest {
         given(bufferedReader.readLine()).willReturn("1234");
 
         //when
-        guessGame.playGame();
+        storyGuessGame.playGame();
 
         //then
-        verify(printStream, never()).println(GuessGame.MATCH);
+        verify(printStream, never()).println(StoryGuessGame.MATCH);
     }
 
     @Test
@@ -121,16 +121,16 @@ public class GuessGameTest {
         given(bufferedReader.readLine()).willReturn("5678");
 
         //when
-        guessGame.playGame();
+        storyGuessGame.playGame();
 
         //then
-        inOrder.verify(printStream).println(String.format(GuessGame.PROMPT_MSG,6));
-        inOrder.verify(printStream).println(String.format(GuessGame.PROMPT_MSG,5));
-        inOrder.verify(printStream).println(String.format(GuessGame.PROMPT_MSG,4));
-        inOrder.verify(printStream).println(String.format(GuessGame.PROMPT_MSG,3));
-        inOrder.verify(printStream).println(String.format(GuessGame.PROMPT_MSG,2));
-        inOrder.verify(printStream).println(String.format(GuessGame.PROMPT_MSG,1));
-        inOrder.verify(printStream).println(GuessGame.GAME_OVER);
+        inOrder.verify(printStream).println(String.format(StoryGuessGame.PROMPT_MSG,6));
+        inOrder.verify(printStream).println(String.format(StoryGuessGame.PROMPT_MSG,5));
+        inOrder.verify(printStream).println(String.format(StoryGuessGame.PROMPT_MSG,4));
+        inOrder.verify(printStream).println(String.format(StoryGuessGame.PROMPT_MSG,3));
+        inOrder.verify(printStream).println(String.format(StoryGuessGame.PROMPT_MSG,2));
+        inOrder.verify(printStream).println(String.format(StoryGuessGame.PROMPT_MSG,1));
+        inOrder.verify(printStream).println(StoryGuessGame.GAME_OVER);
         inOrder.verifyNoMoreInteractions();
     }
 }
