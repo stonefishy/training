@@ -1,3 +1,6 @@
+import java.io.BufferedReader;
+import java.io.PrintStream;
+
 /**
  * Created by yushi on 8/28/14.
  */
@@ -10,9 +13,13 @@ public class BaseGame {
 
     protected String answer;
     protected AnswerGenerator answerGenerator;
+    protected BufferedReader bufferedReader;
+    protected PrintStream printStream;
 
-    public BaseGame(AnswerGenerator answerGenerator) {
+    public BaseGame(AnswerGenerator answerGenerator, PrintStream printStream, BufferedReader bufferedReader) {
         this.answerGenerator = answerGenerator;
+        this.printStream = printStream;
+        this.bufferedReader = bufferedReader;
         this.answer = String.valueOf(answerGenerator.getRandomNumber());
     }
 

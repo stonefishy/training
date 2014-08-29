@@ -4,6 +4,9 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import java.io.BufferedReader;
+import java.io.PrintStream;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.BDDMockito.given;
@@ -18,10 +21,16 @@ public class BaseGameTest {
     @Mock
     private AnswerGenerator answerGenerator;
 
+    @Mock
+    private PrintStream printStream;
+
+    @Mock
+    private BufferedReader bufferedReader;
+
     @Before
     public void setUp(){
         given(answerGenerator.getRandomNumber()).willReturn(1234);
-        baseGame = new BaseGame(answerGenerator);
+        baseGame = new BaseGame(answerGenerator, printStream, bufferedReader);
     }
 
     @Test

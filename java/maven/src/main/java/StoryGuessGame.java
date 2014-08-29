@@ -5,21 +5,17 @@ import java.io.PrintStream;
 /**
  * Created by yushi on 8/27/14.
  */
-public class StoryGuessGame extends BaseGame {
+public class StoryGuessGame extends BaseGame implements IGame {
     public static final String GAME_OVER = "Game Over";
     public static final String WELCOME = "Welcome!";
 
     private int curCount = 0;
 
-    private BufferedReader bufferedReader;
-    private PrintStream printStream;
-
     public StoryGuessGame(AnswerGenerator answerGenerator, BufferedReader bufferedReader, PrintStream printStream) {
-        super(answerGenerator);
-        this.bufferedReader = bufferedReader;
-        this.printStream = printStream;
+        super(answerGenerator, printStream, bufferedReader);
     }
 
+    @Override
     public void playGame() {
         initGame();
         gameCore();
