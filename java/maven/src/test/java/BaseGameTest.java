@@ -30,7 +30,7 @@ public class BaseGameTest {
     @Before
     public void setUp(){
         given(answerGenerator.getRandomNumber()).willReturn(1234);
-        baseGame = new BaseGame(answerGenerator, printStream, bufferedReader);
+        baseGame = new BaseGame(answerGenerator, bufferedReader, printStream);
     }
 
     @Test

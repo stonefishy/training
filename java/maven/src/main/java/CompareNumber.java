@@ -1,3 +1,6 @@
+import org.fest.util.Lists;
+
+import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -20,4 +23,17 @@ public class CompareNumber {
         return String.format("%dA%dB", sameNumberPositionCount, sameNumberDifferentPositionCount);
     }
 
+    public static ArrayList<String> getCompareNumbers(String input, String answer){
+        char[] inputCharArray = input.toCharArray();
+        char[] answerCharArray = answer.toCharArray();
+        ArrayList<String> result = Lists.newArrayList();
+
+        for (int i = 0; i < answerCharArray.length; i++) {
+            if (answerCharArray[i] == inputCharArray[i]) {
+                result.add(String.valueOf(answerCharArray[i]));
+            }
+        }
+
+        return result;
+    }
 }

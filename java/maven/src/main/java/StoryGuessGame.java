@@ -12,7 +12,7 @@ public class StoryGuessGame extends BaseGame implements IGame {
     private int curCount = 0;
 
     public StoryGuessGame(AnswerGenerator answerGenerator, BufferedReader bufferedReader, PrintStream printStream) {
-        super(answerGenerator, printStream, bufferedReader);
+        super(answerGenerator, bufferedReader, printStream);
     }
 
     @Override
@@ -26,7 +26,7 @@ public class StoryGuessGame extends BaseGame implements IGame {
         answer = String.valueOf(answerGenerator.getRandomNumber());
         printStream.println(WELCOME);
         printStream.println();
-        printStream.println(String.format(PROMPT_MSG, MAX_COUNT));
+        printStream.println(String.format(INPUT_MESSAGE, MAX_COUNT));
     }
 
     private void gameCore() {
@@ -40,7 +40,7 @@ public class StoryGuessGame extends BaseGame implements IGame {
                     break;
                 } else {
                     printStream.println();
-                    printStream.println(String.format(PROMPT_MSG, MAX_COUNT - curCount));
+                    printStream.println(String.format(INPUT_MESSAGE, MAX_COUNT - curCount));
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -60,19 +60,8 @@ public class StoryGuessGame extends BaseGame implements IGame {
         return compare;
     }
 
-    private String readInputFromConsole() {
-        String input = null;
-        try {
-            input = bufferedReader.readLine();
-            checkInputValid(input);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return input;
-    }
-
     public static void main(String[] args) {
-        StoryGuessGame storyGuessGame = new StoryGuessGame(new AnswerGenerator(), new BufferedReader(new InputStreamReader(System.in)), System.out);
+        IGame storyGuessGame = new StoryGuessGame(new AnswerGenerator(), new BufferedReader(new InputStreamReader(System.in)), System.out);
         storyGuessGame.playGame();
     }
 }

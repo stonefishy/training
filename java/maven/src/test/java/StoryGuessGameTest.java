@@ -55,7 +55,7 @@ public class StoryGuessGameTest {
         //then
         inOrder.verify(printStream).println(StoryGuessGame.WELCOME);
         inOrder.verify(printStream).println();
-        inOrder.verify(printStream).println(String.format(StoryGuessGame.PROMPT_MSG, StoryGuessGame.MAX_COUNT));
+        inOrder.verify(printStream).println(String.format(StoryGuessGame.INPUT_MESSAGE, StoryGuessGame.MAX_COUNT));
     }
 
     @Test
@@ -84,7 +84,7 @@ public class StoryGuessGameTest {
         //then
         inOrder.verify(printStream).println("0A3B");
         inOrder.verify(printStream).println();
-        inOrder.verify(printStream).println(String.format(StoryGuessGame.PROMPT_MSG, 5));
+        inOrder.verify(printStream).println(String.format(StoryGuessGame.INPUT_MESSAGE, 5));
     }
 
     @Test
@@ -124,12 +124,12 @@ public class StoryGuessGameTest {
         storyGuessGame.playGame();
 
         //then
-        inOrder.verify(printStream).println(String.format(StoryGuessGame.PROMPT_MSG,6));
-        inOrder.verify(printStream).println(String.format(StoryGuessGame.PROMPT_MSG,5));
-        inOrder.verify(printStream).println(String.format(StoryGuessGame.PROMPT_MSG,4));
-        inOrder.verify(printStream).println(String.format(StoryGuessGame.PROMPT_MSG,3));
-        inOrder.verify(printStream).println(String.format(StoryGuessGame.PROMPT_MSG,2));
-        inOrder.verify(printStream).println(String.format(StoryGuessGame.PROMPT_MSG,1));
+        inOrder.verify(printStream).println(String.format(StoryGuessGame.INPUT_MESSAGE,6));
+        inOrder.verify(printStream).println(String.format(StoryGuessGame.INPUT_MESSAGE,5));
+        inOrder.verify(printStream).println(String.format(StoryGuessGame.INPUT_MESSAGE,4));
+        inOrder.verify(printStream).println(String.format(StoryGuessGame.INPUT_MESSAGE,3));
+        inOrder.verify(printStream).println(String.format(StoryGuessGame.INPUT_MESSAGE,2));
+        inOrder.verify(printStream).println(String.format(StoryGuessGame.INPUT_MESSAGE,1));
         inOrder.verify(printStream).println(StoryGuessGame.GAME_OVER);
         inOrder.verifyNoMoreInteractions();
     }
