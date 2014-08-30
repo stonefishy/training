@@ -6,8 +6,8 @@ import java.io.PrintStream;
  * Created by yushi on 8/27/14.
  */
 public class StoryGuessGame extends BaseGame implements IGame {
-    public static final String GAME_OVER = "Game Over";
-    public static final String WELCOME = "Welcome!";
+    protected static final String GAME_OVER = "Game Over";
+    protected static final String WELCOME = "Welcome!";
 
     private int curCount = 0;
 

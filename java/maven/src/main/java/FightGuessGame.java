@@ -9,9 +9,10 @@ import java.util.ArrayList;
  * Created by yushi on 8/29/14.
  */
 public class FightGuessGame extends BaseGame implements IGame {
-    public static final String FIRST_USER = "UserA";
-    public static final String SECOND_USER = "UserB";
-    public static final String YOU_GOT_IT = "You got it.";
+    protected static final String FIRST_USER = "UserA";
+    protected static final String SECOND_USER = "UserB";
+    protected static final String YOU_GOT_IT = "You got it.";
+
     private ArrayList<GamePlayer> playerList = Lists.newArrayList();
     private ArrayList<String> matchedSymbols = Lists.newArrayList();
     private GamePlayer playerA;

@@ -7,7 +7,8 @@ import java.io.PrintStream;
  * Created by yushi on 8/30/14.
  */
 public class GuessGame {
-    public static final String CHOOSE_MODE = "Please choose game mode(1.Story, 2.Fight):";
+    protected static final String CHOOSE_MODE = "Please choose game mode(1.Story, 2.Fight):";
+
     private final PrintStream printStream;
     private final BufferedReader bufferedReader;
 
