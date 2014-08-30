@@ -34,21 +34,6 @@ public class BaseGameTest {
     }
 
     @Test
-    public void shouldThrowExceptionWhenInputInvalid() {
-        //given
-        String input = "abcd";
-
-        //when
-        try {
-            baseGame.checkInputValid(input);
-        } catch (Exception e) {
-            assertTrue(true);
-        }
-
-        //then
-    }
-
-    @Test
     public void shoulReturnMatchWhenInputMatchAnswer() {
         //given
         String input = "1234";

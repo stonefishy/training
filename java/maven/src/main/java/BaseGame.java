@@ -24,10 +24,8 @@ public class BaseGame {
         this.answer = String.valueOf(answerGenerator.getRandomNumber());
     }
 
-    protected void checkInputValid(String input) throws Exception {
-        if (!input.matches(REGEX)) {
-            throw new Exception("Input must be four numbers ");
-        }
+    protected boolean checkInputValid(String input) {
+        return input.matches(REGEX);
     }
 
     protected String compareAnswer(String input) {
@@ -43,13 +41,18 @@ public class BaseGame {
     }
 
     protected String readInputFromConsole() {
-        String input = null;
-        try {
-            input = bufferedReader.readLine();
-            checkInputValid(input);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        String input = "";
+        do {
+            try {
+                input = bufferedReader.readLine();
+                if (!checkInputValid(input)) {
+                    printStream.println("Input must be four numbers ");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } while (!checkInputValid(input));
+
         return input;
     }
 }
